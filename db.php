@@ -8,7 +8,9 @@ const DB_NAME = 'user43104';
 function get_db_connection() {
     static $mysqli = null;
     if ($mysqli === null) {
-        mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        if (function_exists('mysqli_report')) {
+            mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
+        }
         $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
         $mysqli->set_charset('utf8mb4');
     }
