@@ -1,96 +1,164 @@
 <?php
-// Загальні налаштування підключення до MySQL
-const DB_HOST = '127.0.0.1';
-const DB_USER = 'user43104';
-const DB_PASS = '4wJVPki5EPnA';
-const DB_NAME = 'user43104';
+/**
+ * Підключення до онлайн БД Selectio RP
+ * Структура таблиць для особистого кабінету та ігрового сервера
+ */
 
+// === НАЛАШТУВАННЯ БД ===
+define('DB_HOST', '127.0.0.1');
+define('DB_USER', 'user43104');
+define('DB_PASS', '4wJVPki5EPnA');
+define('DB_NAME', 'user43104');
+
+// === ТАБЛИЦІ ІГРОВОГО СЕРВЕРА ===
+define('TABLE_ACCOUNTS', 'accounts');        // Облікові записи гравців
+define('TABLE_ADMIN', 'admin');              // Адміністратори
+define('TABLE_OTHERS', 'others');            // Інші налаштування
+define('TABLE_BANIP', 'banip');              // Забанені IP
+define('TABLE_BIZZ', 'bizz');                // Бізнес
+define('TABLE_HOUSE', 'house');              // Будинки
+define('TABLE_ATM', 'atm');                  // ATM
+define('TABLE_BAN', 'ban');                  // Забаніння
+define('TABLE_GANGZONE', 'gangzone');        // Банди/Зони
+define('TABLE_CARS', 'cars');                // Автомобілі
+define('TABLE_GREENZONE', 'greenzone');      // Зелені зони
+define('TABLE_TICKETS', 'tickets');          // Квитанції
+define('TABLE_SLED', 'tracking');            // Відслідковування
+define('TABLE_PROMOCODE', 'promocode');      // Промокоди
+define('TABLE_PROMOCODE_USED', 'promocode_used'); // Використані промокоди
+
+/**
+ * Отримати підключення до БД
+ * Функція автоматично кешує з'єднання для повторного використання
+ * 
+ * @return mysqli|false
+ */
 function get_db_connection() {
     static $mysqli = null;
+    
     if ($mysqli === null) {
-        // Спробуємо використати MySQLi
-        if (class_exists('mysqli')) {
-            if (function_exists('mysqli_report')) {
-                mysqli_report(MYSQLI_REPORT_ERROR | MYSQLI_REPORT_STRICT);
-            }
-            try {
-                $mysqli = new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
-                $mysqli->set_charset('utf8mb4');
-            } catch (Exception $e) {
-                die('Помилка підключення до БД (MySQLi): ' . $e->getMessage());
-            }
-        } 
-        // Fallback на старі mysql_* функції (якщо доступні)
-        elseif (function_exists('mysql_connect')) {
-            $conn = @mysql_connect(DB_HOST, DB_USER, DB_PASS);
-            if (!$conn) {
-                die('Помилка підключення до БД (MySQL): ' . mysql_error());
-            }
-            if (!@mysql_select_db(DB_NAME, $conn)) {
-                die('Помилка вибору БД: ' . mysql_error());
-            }
-            @mysql_set_charset('utf8mb4', $conn);
-            $mysqli = $conn;
+        // Підключитись до БД без кидання помилок
+        $mysqli = @new mysqli(DB_HOST, DB_USER, DB_PASS, DB_NAME);
+        
+        // Перевірити помилку підключення
+        if ($mysqli->connect_error) {
+            error_log('[DB Error] Не вдалося підключитись до БД: ' . $mysqli->connect_error);
+            return false;
         }
-        // Fallback на PDO
-        elseif (function_exists('pdo')) {
-            try {
-                $mysqli = new PDO('mysql:host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8mb4', DB_USER, DB_PASS);
-                $mysqli->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            } catch (PDOException $e) {
-                die('Помилка підключення до БД (PDO): ' . $e->getMessage());
-            }
-        }
-        else {
-            die('На вашому хостингу не встановлені модулі для роботи з БД (MySQLi, MySQL або PDO відсутні). Зверніться до служби підтримки хостингу.');
+        
+        // Встановити UTF-8 кодування
+        if (!$mysqli->set_charset('utf8mb4')) {
+            error_log('[DB Error] Помилка встановлення кодування: ' . $mysqli->error);
         }
     }
+    
     return $mysqli;
 }
 
-function get_table_names(mysqli $mysqli): array {
-    $tables = [];
-    $result = $mysqli->query('SHOW TABLES');
-    while ($row = $result->fetch_array(MYSQLI_NUM)) {
-        $tables[] = $row[0];
+/**
+ * Виконати SQL запит
+ * @param string $sql SQL запит
+ * @return mysqli_result|bool Результат запиту або false при помилці
+ */
+function db_query($sql) {
+    $mysqli = get_db_connection();
+    if (!$mysqli) return false;
+    
+    $result = $mysqli->query($sql);
+    if (!$result) {
+        error_log('[DB Error] SQL: ' . $sql . ' | Error: ' . $mysqli->error);
     }
-    $result->free();
-    return $tables;
+    return $result;
 }
 
-function find_table(mysqli $mysqli, array $keywords, ?string $fallback = null): ?string {
-    $tables = get_table_names($mysqli);
-    foreach ($keywords as $keyword) {
-        foreach ($tables as $table) {
-            if (stripos($table, $keyword) !== false) {
-                return $table;
-            }
+/**
+ * Отримати один рядок з результату
+ * @param mysqli_result $result Результат запиту
+ * @return array|null
+ */
+function db_fetch_assoc($result) {
+    if (!$result) return null;
+    return $result->fetch_assoc();
+}
+
+/**
+ * Отримати один рядок та закрити результат
+ * @param mysqli_result $result Результат запиту
+ * @return array|null
+ */
+function db_fetch_one($result) {
+    $row = db_fetch_assoc($result);
+    if ($result) $result->free();
+    return $row;
+}
+
+/**
+ * Отримати всі рядки з результату
+ * @param mysqli_result $result Результат запиту
+ * @return array
+ */
+function db_fetch_all($result) {
+    $rows = [];
+    if ($result) {
+        while ($row = $result->fetch_assoc()) {
+            $rows[] = $row;
         }
+        $result->free();
     }
-    return $fallback ?? ($tables[0] ?? null);
+    return $rows;
 }
 
-function get_columns(mysqli $mysqli, string $table): array {
-    $columns = [];
-    $result = $mysqli->query("SHOW COLUMNS FROM `" . $mysqli->real_escape_string($table) . "`");
-    while ($row = $result->fetch_assoc()) {
-        $columns[] = $row['Field'];
-    }
-    $result->free();
-    return $columns;
+/**
+ * Екранувати рядок для безпеки (SQL Injection захист)
+ * @param string $str Рядок для екранування
+ * @return string Екранований рядок
+ */
+function db_escape($str) {
+    $mysqli = get_db_connection();
+    if (!$mysqli) return $str;
+    return $mysqli->real_escape_string($str);
 }
 
-function find_column(array $columns, array $keywords, ?string $fallback = null): ?string {
-    foreach ($keywords as $keyword) {
-        foreach ($columns as $column) {
-            if (stripos($column, $keyword) !== false) {
-                return $column;
-            }
-        }
-    }
-    return $fallback;
+/**
+ * Отримати ID останнього вставленого рядка
+ * @return int ID
+ */
+function db_insert_id() {
+    $mysqli = get_db_connection();
+    if (!$mysqli) return 0;
+    return $mysqli->insert_id;
 }
 
-function quote_identifier(string $value): string {
-    return '`' . str_replace('`', '``', $value) . '`';
+/**
+ * Отримати кількість затронутих рядків останнім запитом
+ * @return int Кількість рядків
+ */
+function db_affected_rows() {
+    $mysqli = get_db_connection();
+    if (!$mysqli) return 0;
+    return $mysqli->affected_rows;
+}
+
+/**
+ * Отримати текст останньої помилки БД
+ * @return string Текст помилки
+ */
+function db_error() {
+    $mysqli = get_db_connection();
+    if (!$mysqli) return 'Не вдалося підключитись до БД';
+    return $mysqli->error ?: 'Невідома помилка';
+}
+
+/**
+ * Закрити підключення до БД
+ */
+function db_close() {
+    static $closed = false;
+    if ($closed) return;
+    
+    $mysqli = get_db_connection();
+    if ($mysqli) {
+        $mysqli->close();
+        $closed = true;
+    }
 }
