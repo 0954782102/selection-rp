@@ -33,15 +33,3 @@ if (!isset($_COOKIE[$languageCookieName])) {
         }
     }
 }
-require($dir . '/src/XF.php');
-
-XF::start($dir);
-
-if (\XF::requestUrlMatchesApi())
-{
-	\XF::runApp('XF\Api\App');
-}
-else
-{
-	\XF::runApp('XF\Pub\App');
-}
