@@ -9,7 +9,7 @@ if(!defined("GRANDRULZ")) exit("HACKING ATTEMPT!");
 
 // Налаштування таблиць (згідно з твоїми дефайнами)
 $tableconf = array(
-    // Основні таблиці
+    // Основні таблиці (твої дефайни)
     'TABLE_ACCOUNTS'       => 'accounts',
     'TABLE_ADMIN'          => 'admin',
     'TABLE_OTHERS'         => 'others',
@@ -26,22 +26,24 @@ $tableconf = array(
     'T_PROMOCODE'          => 'promocode',
     'T_PROMOCODE_USED'     => 'promocode_used',
 
-    // Поля в таблиці accounts (перевір назви в phpMyAdmin)
+    // Поля в таблиці accounts
     'TABLE_ID'             => 'ID',
     'TABLE_NAME'           => 'NickName',
     'TABLE_PASSWORD'       => 'Password',
     'TABLE_LEVEL'          => 'Level',
     'TABLE_MONEY'          => 'Money',
-    'TABLE_CASH'           => 'cash', // Банк
+    'TABLE_CASH'           => 'cash',
     'TABLE_DONATE'         => 'VirMoney',
 
-    // Налаштування UnitPay (якщо використовуєш)
+    // Додаємо ці ключі, щоб прибрати помилки зі скріншоту
+    'X2_DONATE'            => false, 
+    'action'               => '',
+
     'unitpay' => array(
         'shop_id'    => '60203-83cdf',
         'secret_key' => ''
     )
 );
-
 /*
  * Налаштування серверів
  */
