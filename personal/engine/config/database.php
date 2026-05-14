@@ -1,6 +1,8 @@
-п»ї<?php
+<?php
 include "table.php";
-$host = '127.0.0.1';
+// DB host - check your hosting control panel for the correct MySQL host, it may not be 'localhost' or '127.0.0.1'
+// Common examples: 'mysql.hostinger.com', 'localhost', server IP, etc.
+$host = 'localhost';
 $dbname = 'user43104';
 $user = 'user43104';
 $pass = '4wJVPki5EPnA';
@@ -128,17 +130,18 @@ if ($usePdoMysql) {
     try {
         $db = new PDO($dsn, $user, $pass, $opt);
     } catch (PDOException $e) {
-        die('РџРѕРґРєР»СЋС‡РµРЅРёРµ РЅРµ СѓРґР°Р»РѕСЃСЊ: ' . $e->getMessage());
+        die('Подключение не удалось: ' . $e->getMessage());
     }
 } elseif (extension_loaded('mysqli')) {
+    mysqli_report(MYSQLI_REPORT_OFF);
     $mysqli = new mysqli($host, $user, $pass, $dbname);
     if ($mysqli->connect_error) {
-        die('РџРѕРґРєР»СЋС‡РµРЅРёРµ РЅРµ СѓРґР°Р»РѕСЃСЊ: ' . $mysqli->connect_error);
+        die('Подключение не удалось: ' . $mysqli->connect_error);
     }
     $mysqli->set_charset($charset);
     $db = new PDOCompat($mysqli);
 } else {
-    die('РџРѕРґРєР»СЋС‡РµРЅРёРµ РЅРµ СѓРґР°Р»РѕСЃСЊ: С‚СЂРµР±СѓСЋС‚СЃСЏ СЂР°СЃС€РёСЂРµРЅРёСЏ PDO РёР»Рё MySQLi.');
+    die('Подключение не удалось: требуются расширения PDO или MySQLi.');
 }
 
 $sql = "SELECT * FROM ucp_settings";
