@@ -2,12 +2,12 @@
 <div id='content'>
     <div class='container'>
         <div class='row'>
-            <h1 class='title wow fadeIn'>Проблемы со входом?</h1>
+            <h1 class='title wow fadeIn'>Проблеми зі входом?</h1>
             <form method="post">
                 <input type='hidden' name='token' value='35873'/>
                 <div class='col-xs-12'>
                     <div class='col-xs-4 col-xs-offset-4'>
-                        <label for='inp-nickname'  class='labler yellowShadowText'>Ваш ник</label>
+                        <label for='inp-nickname'  class='labler yellowShadowText'>Ваш нік</label>
                         <input id='inp-nickname'  class='allInp' name='login' type='text' required><i class="fa fa-id-card-o" aria-hidden="true"></i>
                         <label for='inp-password' class='labler yellowShadowText'>Ваш E-mail</label>
                         <input id='inp-mail' class='allInp' name='mail' type='text' required><i class="fa fa-envelope-open" aria-hidden="true"></i>
@@ -16,7 +16,7 @@
                 <div class='row'>
                     <div class='col-xs-10 col-xs-offset-1 textcenter padd30'>
                         <div class='col-xs-4 changer'>
-                            <label for='inp-code' class='labler yellowShadowText'>Выбор сервера</label>
+                            <label for='inp-code' class='labler yellowShadowText'>Вибір сервера</label>
                         </div>
                         <?php
                         foreach ($func->servers as $key=>$value){
@@ -29,7 +29,7 @@
                         ?>
                     </div>
                 </div>
-                <center><button name="recovery" type="sumbit" class='doButton'><i class="fa fa-arrow-right" aria-hidden="true"></i> Выслать инструкцию на E-Mail</button></center>
+                <center><button name="recovery" type="sumbit" class='doButton'><i class="fa fa-arrow-right" aria-hidden="true"></i> Надіслати інструкцію на E-Mail</button></center>
         </div>
         </form>
     </div>

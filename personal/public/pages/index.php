@@ -1,5 +1,5 @@
 ﻿<!DOCTYPE html>
-<html lang="ru-RU">
+<html lang="uk-UA">
 <head>
 	<meta charset="UTF-8">
     <title><?php echo $title; ?></title>
@@ -77,15 +77,12 @@
                         </div>
                         <div class='col-md-7'>
                             <ul class='mainMenu wow fadeInLeft wait-1'>
-                                <li><a href='/donate'><img src='/assets/img/donate.png'> Донат<?php echo $tableconf['X2_DONATE'] ? '<span class="x2 yellowShadowText">x2</span>' : ''?></a></li>
+                                <li><a href='/donate'><img src='/assets/img/donate.png'> Пожертвування<?php echo $tableconf['X2_DONATE'] ? '<span class="x2 yellowShadowText">x2</span>' : ''?></a></li>
                                 <li>
-                                    <a href='/#play'><img src='/assets/img/howgame.png'> Как начать играть</a>
+                                    <a href='/#play'><img src='/assets/img/howgame.png'> Як почати грати</a>
                                 </li>
                                 <li>
-                                    <a href='http://forum.grand-rp.su/'><img src='/assets/img/forum.png'> Форум</a>
-                                </li>
-                                <li>
-                                    <a href='/transfer'><img src='/assets/img/change.png'> Перенос аккаунта</a>
+                                    <a href='/transfer'><img src='/assets/img/change.png'> Переніс облікового запису</a>
                                 </li>
                                 <li>
                                     <a href='/lottery'><img src='/assets/img/lotery.png'> Лотерея</a>
@@ -102,31 +99,24 @@
                                 <div class="money"><i class="fa fa-money yellowShadowText" aria-hidden="true"></i> <?php echo $user->player[$tableconf['TABLE_DONATE']]; ?> <sup>руб.</sup></div>
                             </div>
                             <?php else: ?>
-                            <a href='/account/' class='login yellowShadow right animated wow fadeInRight wait-2'>Личный кабинет</a></div>
+                            <a href='/account/' class='login yellowShadow right animated wow fadeInRight wait-2'>Особистий кабінет</a></div>
                             <?php endif;?>
                     </div>
                 </div>
             </div>
 
 	<?php require_once $page; ?>
-    <!-- ВК
-    <script type="text/javascript" src="//vk.com/js/api/openapi.js?142"></script>
-    <div id="vk_community_messages"></div>
-    <script type="text/javascript">
-    VK.Widgets.CommunityMessages("vk_community_messages", 111339891, {tooltipButtonText: "Есть вопрос ?"});
-    </script>-->
     <div id='footer'>
         <div class='container'>
             <div class='row'>
                 <div class='col-xs-12 wow fadeIn wait-1'>
                     <div class='col-md-6'>
-                        <p><span>Социальные ссылки</span></p>
-                        <p><a href='https://www.youtube.com/channel/UCbvbWcNED6440a54T2tgtPw'><i class="fa fa-youtube" aria-hidden="true"></i> Youtube-канал</a></p>
-                        <p><a href='https://vk.com/grandrpsamp'><i class="fa fa-vk" aria-hidden="true"></i> Сообщество Вконтакте</a></p>
+                        <p><span>Соціальні посилання</span></p>
+                        <p><a href='https://www.youtube.com/channel/UCbvbWcNED6440a54T2tgtPw'><i class="fa fa-youtube" aria-hidden="true"></i> YouTube-канал</a></p>
                     </div>
                     <div class='col-md-6 textright'>
-                        <p><span>Техническая поддержка</span></p>
-                        <p><a href='https://vk.com/im?media=&sel=-111339891'><i class="fa fa-users" aria-hidden="true"></i> Обращение по поводу партнёрства</a></p>
+                        <p><span>Технічна підтримка</span></p>
+                        <p><a href='#'><i class="fa fa-envelope" aria-hidden="true"></i> Напишіть нам</a></p>
                     </div>
                 </div>
             </div>

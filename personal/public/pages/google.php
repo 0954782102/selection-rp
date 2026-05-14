@@ -2,24 +2,24 @@
 <div id='content'>
     <div class='container'>
         <div class='row'>
-            <h1 class='title wow fadeIn'>GOOGLE AUTHENTICATOR - Ваша защита аккаунта!</h1>
+            <h1 class='title wow fadeIn'>GOOGLE AUTHENTICATOR - Ваш захист облікового запису!</h1>
             <div class='col-xs-12'>
 
                 <div class='col-xs-12'>
-                    <center><h3 class='blockTitle wow fadeIn'>Общая информация</h3></center>
+                    <center><h3 class='blockTitle wow fadeIn'>Загальна інформація</h3></center>
                     <div class='darkBlock wow fadeInRight'>
                         <div class='row'>
-                            <center>Если на ваш игровой аккаунт попытаются зайти с чужого компьютера, мы запросим подтверждение.
+                            <center>Не вяхай бути, на ваш игровой обліковий запис спробують відкрити з чужого комп'ютера, ми запросимо підтвердження.
                                 <br><br>
-                                Для этого установите приложение на телефон
-                                и следуйте требованиям указанным ниже.<br><br>
+                                Для цього встановіть додаток на телефон
+                                та сповідайтесь вимогам наведеним нижче.<br><br>
                                 <a href='https://itunes.apple.com/ru/app/google-authenticator/id388497605'><img width='150' src='/assets/img/app.jpg'/></a>
                                 <a href='https://www.windowsphone.com/s?appid=f758eb53-ff04-404b-9382-4d4e26f7bd46'><img width='150' src='/assets/img/wind.png'/></a>
                                 <a href='https://play.google.com/store/apps/details?id=com.google.android.apps.authenticator2'><img width='150' src='/assets/img/goog.png'/></a>
                             </center>
                         </div>
                     </div>
-                    <center><h3 class='blockTitle wow fadeIn'>ОТСКАНИРУЙТЕ
+                    <center><h3 class='blockTitle wow fadeIn'>ОТРИМАЙТЕ
                             QR-КОД</h3></center>
                     <div class='darkBlock wow fadeIn'>
                         <div class='row'>
@@ -27,13 +27,13 @@
                                 <img src='<?php echo $ga->getQRCodeGoogleUrl($user->player[$tableconf['TABLE_NAME']],$_SESSION['ga_secret'],'grand-rp.ru');?>'>
                             </div>
                             <div class='col-md-9'>
-                                При помощи приложения Google Authenticator отсканируйте QR-код расположенный слева(используя камеру вашего мобильного телефона).
+                                При допомозі додатку Google Authenticator отримайте QR-код розташований зліва(використовуючи камеру вашого мобільного телефона).
                                 <br><br>
-                                Затем введите одноразовый пароль(код) из приложения:
+                                Потім введіть одноразовий пароль(код) з додатку:
                                 <form method='post'>
-                                    <label for='inp-nickname'  class='labler yellowShadowText'>Ваш секретный код</label>
+                                    <label for='inp-nickname'  class='labler yellowShadowText'>Ваш таїний код</label>
                                     <input id='inp-nickname' class='allInp' name='code' onkeypress='return check(event);'  type='text' required><i class='fa fa-warning' aria-hidden='true'></i>
-                                    <center><button type='sumbit' class='doButton'><i class='fa fa-arrow-right' aria-hidden='true'></i> Продолжить</button></center>
+                                    <center><button type='sumbit' class='doButton'><i class='fa fa-arrow-right' aria-hidden='true'></i> Продовжити</button></center>
                                 </form>
                             </div>
                         </div>
@@ -49,7 +49,7 @@
     {
         if (event.keyCode==32)
         {
-            alert('Пробел ставить не нужно');
+            alert('Не будь ставити пробіл');
             return false;
         }
     }

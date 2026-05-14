@@ -6,13 +6,13 @@
         </div></div>
     <div class='container'>
         <div class='row'>
-            <h1 class='title wow fadeIn'>Донат</h1>
+            <h1 class='title wow fadeIn'>Пожертвування</h1>
             <div class='col-xs-12'>
                 <div class='col-xs-3'>
                     <ul class="donateList">
-                        <li><a href="http://forum.grand-rp.su/threads/gde-uznat-nomer-akkaunta.147/"><i class="fa fa-circle" aria-hidden="true"></i> Где узнать номер аккаунта</a></li>
-                        <li><a href="http://forum.grand-rp.su/threads/akcii.148/"><i class="fa fa-circle" aria-hidden="true"></i> Акции</a></li>
-                        <li><a href="http://forum.grand-rp.su/threads/chto-mozhno-priobresti.170/"><i class="fa fa-circle" aria-hidden="true"></i> Что можно приобрести</a></li>
+                        <li><a href="http://forum.grand-rp.su/threads/gde-uznat-nomer-akkaunta.147/"><i class="fa fa-circle" aria-hidden="true"></i> Де дізнатися номер облікового запису</a></li>
+                        <li><a href="http://forum.grand-rp.su/threads/akcii.148/"><i class="fa fa-circle" aria-hidden="true"></i> Акції</a></li>
+                        <li><a href="http://forum.grand-rp.su/threads/chto-mozhno-priobresti.170/"><i class="fa fa-circle" aria-hidden="true"></i> Що можна придбати</a></li>
                     </ul>
                 </div>
             </div>
@@ -38,7 +38,7 @@
             <form method="post">
                 <div class='col-xs-10 col-xs-offset-1 textcenter padd30'>
                     <div class='col-xs-4 changer'>
-                        <label for='inp-code' class='labler yellowShadowText'>Выбор сервера</label>
+                        <label for='inp-code' class='labler yellowShadowText'>Вибір сервера</label>
                     </div>
                     <?php
                     foreach ($func->servers as $key=>$value){

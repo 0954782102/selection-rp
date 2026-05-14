@@ -2,21 +2,21 @@
 <div id='content'>
     <div class='container'>
         <div class='row'>
-            <h1 class='title wow fadeIn'>Настройки безопасности</h1>
-            <h3 class='blockTitle wow fadeIn'>Информация</h3>
+            <h1 class='title wow fadeIn'>Налаштування безпеки</h1>
+            <h3 class='blockTitle wow fadeIn'>Інформація</h3>
             <div class='darkBlock wow fadeInRight'>
                 <div class='row'>
                     <div class='col-xs-12'>
                         <div class='col-xs-4'>
                             <p><small>Google Authenticator</small></p>
-                            <p><span class='fontnumb'><span class='spincrement'><?php echo empty($user->player[$tableconf['TABLE_GASECRET']]) ? "Отсутствует" : "Установлен"; ?></span></span></p>
+                            <p><span class='fontnumb'><span class='spincrement'><?php echo empty($user->player[$tableconf['TABLE_GASECRET']]) ? "Відсутній" : "Встановлений"; ?></span></span></p>
                         </div>
                         <div class='col-xs-4'>
-                            <p><small>Привязка по IP</small></p>
-                            <p><span class='fontnumb'><span class='spincrement'>Отсутствует</span></span></p>
+                            <p><small>Прив'язка по IP</small></p>
+                            <p><span class='fontnumb'><span class='spincrement'>Відсутня</span></span></p>
                         </div>
                         <div class='col-xs-4'>
-                            <p><small>Последний вход</small></p>
+                            <p><small>Останній вхід</small></p>
                             <?php
 
                             $last = $user->conn->query("SELECT * FROM `log_auth` WHERE `name` = '".$user->player[$tableconf['TABLE_NAME']]."' ORDER BY `date` DESC LIMIT 1")->fetch_assoc();
@@ -27,51 +27,51 @@
                     </div>
                 </div>
             </div>
-            <h3 class='blockTitle wow fadeIn'>Смена пароля</h3>
+            <h3 class='blockTitle wow fadeIn'>Зміна пароля</h3>
             <div class='col-md-12'>
 
                 <div class='darkBlock wow fadeInRight'>
                     <div class='row'>
-                        - Новый пароль должен иметь не менее 4 и не более 16 символов!<br>
+                        - Новий пароль повинен мати не менше 4 і не більше 16 символів!<br>
                         <form method="post">
                             <div class='col-md-6'>
 
-                                <label for='inp-nickname'  class='labler yellowShadowText'>Старый пароль</label>
+                                <label for='inp-nickname'  class='labler yellowShadowText'>Старий пароль</label>
                                 <input id='inp-nickname'  class='allInp' name='lastpass' type='password' required><i class="fa fa-exchange" aria-hidden="true"></i>
                             </div>
                             <div class='col-md-6'>
-                                <label for='inp-nickname'  class='labler yellowShadowText'>Новый пароль</label>
+                                <label for='inp-nickname'  class='labler yellowShadowText'>Новий пароль</label>
                                 <input id='inp-nickname'  class='allInp' name='newpass' type='password' required><i class="fa fa-key" aria-hidden="true"></i>
                             </div>
-                            <center><button type="sumbit" name="setpass" class='doButton'><i class="fa fa-check" aria-hidden="true"></i> Изменить</button></center>
+                            <center><button type="sumbit" name="setpass" class='doButton'><i class="fa fa-check" aria-hidden="true"></i> Змінити</button></center>
                     </div>
                     </forM>
 
                 </div>
             </div><br>
-            <h3 class='blockTitle wow fadeIn'>Смена Email</h3>
+            <h3 class='blockTitle wow fadeIn'>Зміна Email</h3>
             <div class='col-md-12'>
                 <div class='darkBlock wow fadeInRight'>
                     <div class='row'>
-                        - При изменении Email, вам будет отправлено письмо на старый ящик, что бы продолжить смену!<br>
+                        - При зміні Email, вам буде відправлено лист на старий поштовий ящик, щоб продовжити зміну!<br>
                         <form method="post">
                             <div class='col-md-6'>
 
-                                <label for='inp-nickname'  class='labler yellowShadowText'>Старый Email</label>
+                                <label for='inp-nickname'  class='labler yellowShadowText'>Старий Email</label>
                                 <input id='inp-nickname'  class='allInp' name='lastemail' type='email' required><i class="fa fa-envelope-open-o" aria-hidden="true"></i>
                             </div>
                             <div class='col-md-6'>
-                                <label for='inp-nickname'  class='labler yellowShadowText'>Новый Email</label>
+                                <label for='inp-nickname'  class='labler yellowShadowText'>Новий Email</label>
                                 <input id='inp-nickname'  class='allInp' name='newemail' type='email' required><i class="fa fa-envelope-open" aria-hidden="true"></i>
                             </div>
-                            <center><button type="sumbit" name="setemail" class='doButton'><i class="fa fa-check" aria-hidden="true"></i> Изменить</button></center>
+                            <center><button type="sumbit" name="setemail" class='doButton'><i class="fa fa-check" aria-hidden="true"></i> Змінити</button></center>
                     </div>
                     </forM>
 
                 </div>
             </div>
         </div>
-        <h1 class='title wow fadeIn'><p class='needInfo right'>Последние 20 авторизаций в Личный Кабинет</h1>
+        <h1 class='title wow fadeIn'><p class='needInfo right'>Останні 20 авторизацій в Особистий Кабінет</h1>
         <div class='col-xs-12'>
             <div class='darkBlock wow fadeInRight'>
                 <ul class='mainList'>

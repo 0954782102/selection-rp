@@ -2,19 +2,19 @@
 <div id="content">
     <div class="container">
         <div class="row">
-            <h1 class="title wow fadeIn" style="visibility: visible; animation-name: fadeIn;"><p class="needInfo right">Общее количество сотрудников: <span class="fontnumb"><?php echo count($leader);?></span></p></h1>
+            <h1 class="title wow fadeIn" style="visibility: visible; animation-name: fadeIn;"><p class="needInfo right">Загальна кількість працівників: <span class="fontnumb"><?php echo count($leader);?></span></p></h1>
             <div class="col-xs-12">
                 <div class="darkBlock wow fadeInRight" style="visibility: visible; animation-name: fadeInRight;">
                     <ul class="mainList">
                         <li class="th_">
                             <div class="col-xs-6">
-                                Сотрудник
+                                Працівник
                             </div>
                             <div class="col-xs-3">
-                                Ранг
+                                Титул
                             </div>
                             <div class="col-xs-3">
-                                Активность
+                                Активність
                             </div>
                         </li>
 
@@ -27,7 +27,7 @@
                                     <button class="delSost"><i class="fa fa-male" aria-hidden="true"></i> <i class="fa fa-window-close" aria-hidden="true"></i></button>
                                 </form>
                                 <div class="col-xs-6">
-                                    <?php echo $key[$tableconf['TABLE_NAME']]; if($key[$tableconf['TABLE_NAME']] == $user->player[$tableconf['TABLE_NAME']]) echo " (Это Вы)";?>
+                                    <?php echo $key[$tableconf['TABLE_NAME']]; if($key[$tableconf['TABLE_NAME']] == $user->player[$tableconf['TABLE_NAME']]) echo " (Це Ви)";?>
                                 </div>
                                 <div class="col-xs-3">
                                     <span class="fontnumb"><?php echo $key[$tableconf['TABLE_RANG']];?></span>

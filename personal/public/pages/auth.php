@@ -2,12 +2,12 @@
 <div id='content'>
     <div class='container'>
         <div class='row'>
-            <h1 class='title wow fadeIn'>Личный кабинет персонажа<a href='/auth/recovery/' class='right newpass yellowShadowBlck'><i class="fa fa-life-ring" aria-hidden="true"></i> Восстановление пароля</a></h1>
+            <h1 class='title wow fadeIn'>Особистий кабінет персонажа<a href='/auth/recovery/' class='right newpass yellowShadowBlck'><i class="fa fa-life-ring" aria-hidden="true"></i> Відновлення пароля</a></h1>
             <form method="post">
                 <input type='hidden' name='token' value='12426'/>
                 <div class='col-xs-12'>
                     <div class='col-xs-4 col-xs-offset-4'>
-                        <label for='inp-nickname' class='labler yellowShadowText'>Ваш ник</label>
+                        <label for='inp-nickname' class='labler yellowShadowText'>Ваш нік</label>
                         <input id='inp-nickname' class='allInp' name="login" type='text' required><i class="fa fa-id-card-o" aria-hidden="true"></i>
                         <label for='inp-password' class='labler yellowShadowText'>Пароль</label>
                         <input id='inp-password' class='allInp' name="password" type='password' required><i class="fa fa-hashtag" aria-hidden="true"></i>
