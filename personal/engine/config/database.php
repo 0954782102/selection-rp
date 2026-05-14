@@ -1,8 +1,8 @@
-<?php
+?<?php
 include "table.php";
-// DB host - check your hosting control panel for the correct MySQL host, it may not be 'localhost' or '127.0.0.1'
+// DB host - check your hosting control panel for the correct MySQL host, it may not be '127.0.0.1'
 // Common examples: 'mysql.hostinger.com', 'localhost', server IP, etc.
-$host = 'localhost';
+$host = '127.0.0.1';
 $dbname = 'user43104';
 $user = 'user43104';
 $pass = '4wJVPki5EPnA';
@@ -148,5 +148,3 @@ $sql = "SELECT * FROM ucp_settings";
 $statement = $db->prepare($sql);
 $statement->execute();
 $ucp_settings = $statement->fetch();
-
-
