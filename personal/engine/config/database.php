@@ -1,18 +1,25 @@
-?<?php
-include "table.php";
-// DB host - check your hosting control panel for the correct MySQL host, it may not be '127.0.0.1'
-// Common examples: 'mysql.hostinger.com', 'localhost', server IP, etc.
-$host = '127.0.0.1';
-$dbname = 'user43104';
-$user = 'user43104';
-$pass = '4wJVPki5EPnA';
-$charset = 'utf8';
+<?php
+// Åñëè ôàéë table.php ëåæèò â òîé æå ïàïêå, îñòàâëÿåì òàê. 
+// Åñëè íåò — ïğîâåğü ïóòü.
+include_once "table.php";
 
+// ÎÑÍÎÂÍÛÅ ÍÀÑÒĞÎÉÊÈ
+// Ïîïğîáóé 'localhost' âìåñòî '127.0.0.1', åñëè îøèáêà ïîâòîğèòñÿ
+$host    = 'localhost'; 
+$dbname  = 'user43104';
+$user    = 'user43104';
+$pass    = '4wJVPki5EPnA';
+$charset = 'utf8mb4'; // utf8mb4 ëó÷øå ïîääåğæèâàåò ñîâğåìåííûå ñèìâîëû
+
+// Ïğåäâàğèòåëüíîå îïğåäåëåíèå êîíñòàíò (íà ñëó÷àé, åñëè PDO íå çàãğóæåí)
 if (!defined('PDO::ATTR_DEFAULT_FETCH_MODE')) define('PDO::ATTR_DEFAULT_FETCH_MODE', 3);
-if (!defined('PDO::ATTR_EMULATE_PREPARES')) define('PDO::ATTR_EMULATE_PREPARES', 20);
-if (!defined('PDO::FETCH_ASSOC')) define('PDO::FETCH_ASSOC', 2);
-if (!defined('PDO::ERRMODE_EXCEPTION')) define('PDO::ERRMODE_EXCEPTION', 2);
+if (!defined('PDO::ATTR_EMULATE_PREPARES'))   define('PDO::ATTR_EMULATE_PREPARES', 20);
+if (!defined('PDO::FETCH_ASSOC'))             define('PDO::FETCH_ASSOC', 2);
+if (!defined('PDO::ERRMODE_EXCEPTION'))       define('PDO::ERRMODE_EXCEPTION', 2);
 
+/**
+ * İìóëÿöèÿ PDOStatement ÷åğåç MySQLi äëÿ ñòàğûõ ñèñòåì
+ */
 class PDOStatementCompat
 {
     protected $mysqli;
@@ -90,6 +97,9 @@ class PDOStatementCompat
     }
 }
 
+/**
+ * İìóëÿöèÿ PDO ÷åğåç MySQLi
+ */
 class PDOCompat
 {
     protected $mysqli;
@@ -110,6 +120,7 @@ class PDOCompat
     }
 }
 
+// ËÎÃÈÊÀ ÏÎÄÊËŞ×ÅÍÈß
 $usePdoMysql = false;
 if (class_exists('PDO')) {
     try {
@@ -121,30 +132,42 @@ if (class_exists('PDO')) {
 }
 
 if ($usePdoMysql) {
+    // Âàğèàíò 1: ×åğåç ñòàíäàğòíûé PDO
     $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
     $opt = [
-        //PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
+        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
         PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
         PDO::ATTR_EMULATE_PREPARES   => false,
     ];
     try {
         $db = new PDO($dsn, $user, $pass, $opt);
     } catch (PDOException $e) {
-        die('Ïîäêëş÷åíèå íå óäàëîñü: ' . $e->getMessage());
+        die('Îøèáêà ïîäêëş÷åíèÿ (PDO): ' . $e->getMessage());
     }
 } elseif (extension_loaded('mysqli')) {
+    // Âàğèàíò 2: ×åğåç ıìóëÿöèş è MySQLi
     mysqli_report(MYSQLI_REPORT_OFF);
-    $mysqli = new mysqli($host, $user, $pass, $dbname);
+    $mysqli = @new mysqli($host, $user, $pass, $dbname);
+    
     if ($mysqli->connect_error) {
-        die('Ïîäêëş÷åíèå íå óäàëîñü: ' . $mysqli->connect_error);
+        die('Îøèáêà ïîäêëş÷åíèÿ (MySQLi): ' . $mysqli->connect_error . ' (Êîä: ' . $mysqli->connect_errno . ')');
     }
+    
     $mysqli->set_charset($charset);
     $db = new PDOCompat($mysqli);
 } else {
-    die('Ïîäêëş÷åíèå íå óäàëîñü: òğåáóşòñÿ ğàñøèğåíèÿ PDO èëè MySQLi.');
+    die('Êğèòè÷åñêàÿ îøèáêà: íà ñåğâåğå íå óñòàíîâëåíû ğàñøèğåíèÿ PDO èëè MySQLi.');
 }
 
-$sql = "SELECT * FROM ucp_settings";
-$statement = $db->prepare($sql);
-$statement->execute();
-$ucp_settings = $statement->fetch();
+// ÒÅÑÒÎÂÛÉ ÇÀÏĞÎÑ
+try {
+    $sql = "SELECT * FROM ucp_settings";
+    $statement = $db->prepare($sql);
+    $statement->execute();
+    $ucp_settings = $statement->fetch();
+    
+    // Åñëè íóæíî ïğîâåğèòü ğåçóëüòàò:
+    // print_r($ucp_settings);
+} catch (Exception $e) {
+    echo "Îøèáêà âûïîëíåíèÿ çàïğîñà: " . $e->getMessage();
+}
