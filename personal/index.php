@@ -1,7 +1,7 @@
 <?php
 /*
 =====================================================
- Copyright (c) © 2017
+ Copyright (c) © 2017 - 2026 Selection RP
 =====================================================
  Файл: index.php - Главный файл сайта
 =====================================================
@@ -17,9 +17,20 @@ define('ENGINE_DIR', SERVER_DIR.'/engine');
 define('PUBLIC_DIR', SERVER_DIR.'/public');
 
 /*
+ * ВИПРАВЛЕННЯ ШЛЯХІВ: 
+ * Встановлюємо базовий шлях для CSS/JS, щоб вони підвантажувалися з папки /personal/
+ */
+$base_url = "/personal/";
+
+/*
  * Подключения файла конфигурации
  */
 require_once ENGINE_DIR.'/config.php';
+
+// Додатковий захист від помилки Undefined array key "action"
+if (!isset($_GET['action'])) {
+    $_GET['action'] = 'main'; 
+}
 
 /*
  * Подключение классов для работы сайта
@@ -47,7 +58,6 @@ $func->getOnlineFromAllServers();
 require_once ENGINE_DIR.'/core/main.php';
 
 /*
- * Подключение главной страницы, если $stop == true то она не загружается - это нужно для скриптов
+ * Подключение главной страницы
  */
 if(!$stop) require_once PUBLIC_DIR.'/pages/index.php';
-
