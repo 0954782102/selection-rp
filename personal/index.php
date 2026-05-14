@@ -1,63 +1,64 @@
 <?php
-/*
-=====================================================
- Copyright (c) © 2017 - 2026 Selection RP
-=====================================================
- Файл: index.php - Главный файл сайта
-=====================================================
-*/
 session_start();
+// header("Content-Type:text/html;charset=UTF-8");
+require_once("engine/config/database.php");
+require_once("engine/classes/loader.php"); 
 
-/*
- * Обьявляем переменные, нужные для работы сайта
- */
-define('GRANDRULZ', true);
-define('SERVER_DIR', dirname ( __FILE__ ));
-define('ENGINE_DIR', SERVER_DIR.'/engine');
-define('PUBLIC_DIR', SERVER_DIR.'/public');
 
-/*
- * ВИПРАВЛЕННЯ ШЛЯХІВ: 
- * Встановлюємо базовий шлях для CSS/JS, щоб вони підвантажувалися з папки /personal/
- */
-$base_url = "/personal/";
 
-/*
- * Подключения файла конфигурации
- */
-require_once ENGINE_DIR.'/config.php';
 
-// Додатковий захист від помилки Undefined array key "action"
-if (!isset($_GET['action'])) {
-    $_GET['action'] = 'main'; 
+
+if($_SERVER['REQUEST_URI'] == '/')
+{
+	$class = "index";
+	$url = "main";
+
+}
+else if(substr($_SERVER['REQUEST_URI'], 1,6) != 'admin/' && substr($_SERVER['REQUEST_URI'], 1,8) != 'profile/') 
+{
+	
+	$class = substr($_SERVER['REQUEST_URI'], 1); $url = "main";
+	
+}
+else if(substr($_SERVER['REQUEST_URI'], 1,6) == 'admin/') // Админ Раздел
+{
+	$url = "admin";
+	$params = explode("/", substr($_SERVER['REQUEST_URI'], 7));
+	if($params[0] == "") $class = "index";
+	else $class = $params[0];
+	
+
 }
 
-/*
- * Подключение классов для работы сайта
- */
-require_once ENGINE_DIR.'/classes/exception.class.php';
-require_once ENGINE_DIR.'/classes/mysql.class.php';
-require_once ENGINE_DIR.'/classes/statement.class.php';
-require_once ENGINE_DIR.'/classes/func.class.php';
-require_once ENGINE_DIR.'/classes/user.class.php';
+else if(substr($_SERVER['REQUEST_URI'], 1,8) == 'profile/') // Пользовательский Раздел
+{
+	$url = "profile";
 
-/*
- * Иницилизация функций
- */
-$func = new func();
-$user = new user();
+	$params = explode("/", substr($_SERVER['REQUEST_URI'], 9));
+	if($params[0] == "") $class = "index";
+	else if($params[0] == "exit") { session_destroy();exit("<meta http-equiv='refresh' content='0; url= /'>"); }
+	else $class = $params[0];
+	
+	
+}
+// else $class = substr($_SERVER['REQUEST_URI'], 1); $url = "main"; // Общий Раздел
 
-/*
- * Узнаем онлайн со всех серверов, если сервер не отвечают онлайн = 0
- */
-$func->getOnlineFromAllServers();
 
-/*
- * Подключения ядра сайта
- */
-require_once ENGINE_DIR.'/core/main.php';
+if(file_exists("engine/classes/".$url."/".$class.".php")) {
+	
+	include("engine/classes/".$url."/".$class.".php");
+	if(class_exists($class)) {
+		
+		$obj = new $class;
+		$obj->get_body();
+	}
+	else {
+		
+		exit("<meta http-equiv='refresh' content='0; url= /error/404.php'>");
+	}
+}
+else {
+	
+	exit("<meta http-equiv='refresh' content='0; url= /error/404.php'>");
+}
 
-/*
- * Подключение главной страницы
- */
-if(!$stop) require_once PUBLIC_DIR.'/pages/index.php';
