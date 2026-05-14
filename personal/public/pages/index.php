@@ -96,14 +96,13 @@
                                 <div class="level"><?php echo $user->player[$tableconf['TABLE_LEVEL']]; ?></div>
                                 <div class="avatar minimize"> <img src="/assets/img/ava.png"> </div>
                                 <p><?php echo $user->player[$tableconf['TABLE_NAME']]; ?><span class="exit"></span></p>
-                                <div class="money"><i class="fa fa-money yellowShadowText" aria-hidden="true"></i> <?php echo $user->player[$tableconf['TABLE_DONATE']]; ?> <sup>руб.</sup></div>
+                                <div class="money"><i class="fa fa-money yellowShadowText" aria-hidden="true"></i> <?php echo $user->player[$tableconf['TABLE_DONATE']]; ?> <sup>грн.</sup></div>
                             </div>
                             <?php else: ?>
                             <a href='/account/' class='login yellowShadow right animated wow fadeInRight wait-2'>Особистий кабінет</a></div>
                             <?php endif;?>
                     </div>
                 </div>
-            </div>
 
 	<?php require_once $page; ?>
     <div id='footer'>
