@@ -1,9 +1,9 @@
 ﻿<?php
 include "table.php";
-$host = 'localhost';
-$dbname   = 'database';
-$user = 'admin';
-$pass = 'parol';
+$host = '127.0.0.1';
+$dbname   = 'user43104';
+$user = 'user43104';
+$pass = '4wJVPki5EPnA';
 $charset = 'utf8';
 
 $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
