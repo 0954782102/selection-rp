@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 	<meta charset="UTF-8">
-	<title>Личный кабинет - <?php echo $ucp_settings['s_title']?></title>
+	<title>Особистий кабінет - <?php echo $ucp_settings['s_title']?></title>
 	<link rel="shortcut icon" href="<?php echo $ucp_settings['s_favicon']?>" type="image/png">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -21,7 +21,7 @@
 
     <div class="heading">
         <div>
-            <h1>Личный кабинет</h1>
+            <h1>Особистий кабінет</h1>
             <div class="breaker"></div>
         </div>
         <img src="/public/main/img/dots.svg" alt="">
@@ -46,12 +46,11 @@
 							</div>
 							<div class="user__navblock__list">
 								<a class="active tablinks" onclick="openTabs(event, 'stats')" id="defaultOpen"><div class="user__navblock">Статистика</div></a>
-								<a class="tablinks" onclick="openTabs(event, 'skill')"><div class="user__navblock">Навыки</div></a>
-								<a class="tablinks" onclick="openTabs(event, 'settings')"><div class="user__navblock">Настройки</div></a>
+								<a class="tablinks" onclick="openTabs(event, 'skill')"><div class="user__navblock">Навички</div></a>
+								<a class="tablinks" onclick="openTabs(event, 'settings')"><div class="user__navblock">Налаштування</div></a>
 
 								<a href="/profile/roulette"><div class="user__navblock">Рулетка</div></a>
-								<a href="/profile/exit"><div class="user__navblock">Выйти</div></a>
-								
+						<a href="/profile/exit"><div class="user__navblock">Вийти</div></a>
 							</div>
 						</div>
 
@@ -60,14 +59,14 @@
 								<table>
 									<tbody>
 										<tr>
-											<th>Последний вход</th>
-											<th>Последний IP</th>
-											<th>Состояние</th>				
+											<th>Останній вхід</th>
+											<th>Останній IP</th>
+											<th>Стан</th>				
 										</tr>
 										<tr>
 											<td><?php echo $data[$ucp_table_settings['last_date']] ?></td>
 											<td><?php echo $data[$ucp_table_settings['last_ip']] ?></td>
-											<td><?php if($data[$ucp_table_settings['online']]) echo "В игре"; else echo "Не в игре"; ?></td>				
+											<td><?php if($data[$ucp_table_settings['online']]) echo "У грі"; else echo "Не в грі"; ?></td>				
 										</tr>
 									</tbody>
 								</table>
@@ -79,20 +78,20 @@
 								<!-- <div class="user__stats"> -->
 									
 									<ul class="left">
-										<li>Имя<span><?php FixName($data[$ucp_table_settings['name']]) ?></span></li>
-										<li>Уровень<span><?php echo $data[$ucp_table_settings['level']] ?></span></li>
-										<li>Наличные деньги<span><?php echo $data[$ucp_table_settings['cash']] ?>$</span></li>
-										<li>Номер телефона<span><?php echo $data[$ucp_table_settings['u_phone']] ?></span></li>
-										<li>Донат счет<span><?php echo $data[$ucp_table_settings['donate']] ?> руб.</span></li>
-										<li>Банковский счет<span><?php echo $data[$ucp_table_settings['bank']] ?>$</span></li>
+										<li>Імʼя<span><?php FixName($data[$ucp_table_settings['name']]) ?></span></li>
+										<li>Рівень<span><?php echo $data[$ucp_table_settings['level']] ?></span></li>
+										<li>Готівка<span><?php echo $data[$ucp_table_settings['cash']] ?>$</span></li>
+										<li>Телефон<span><?php echo $data[$ucp_table_settings['u_phone']] ?></span></li>
+										<li>Донат рахунок<span><?php echo $data[$ucp_table_settings['donate']] ?> руб.</span></li>
+										<li>Банківський рахунок<span><?php echo $data[$ucp_table_settings['bank']] ?>$</span></li>
 									</ul>
 									<ul class="right">
-										<li>Пол<span><?php if($data[$ucp_table_settings['sex']]) echo "Женский"; else echo "Мужской"; ?></span></li>
-										<li>Бизнес<span><?php if($data[$ucp_table_settings['biz']] != -1) echo "№". $data[$ucp_table_settings['biz']]; else echo "Отсутствует"; ?></span></li>
-										<li>Дом<span><?php if($data[$ucp_table_settings['house']] != -1) echo "№". $data[$ucp_table_settings['house']]; else echo "Отсутствует"; ?></span></li>
-										<li>Домашний транспорт<span>Отсутствует</span></li>
-										<li>Подработка<span>Отсутствует</span></li>
-										<li>Фракция<span>Отсутствует</span></li>
+										<li>Стать<span><?php if($data[$ucp_table_settings['sex']]) echo "Жіноча"; else echo "Чоловіча"; ?></span></li>
+										<li>Бізнес<span><?php if($data[$ucp_table_settings['biz']] != -1) echo "№". $data[$ucp_table_settings['biz']]; else echo "Відсутній"; ?></span></li>
+										<li>Дім<span><?php if($data[$ucp_table_settings['house']] != -1) echo "№". $data[$ucp_table_settings['house']]; else echo "Відсутній"; ?></span></li>
+										<li>Домашній транспорт<span>Відсутній</span></li>
+										<li>Підробіток<span>Відсутній</span></li>
+										<li>Фракція<span>Відсутній</span></li>
 
 									</ul>
 								<!-- </div> -->
@@ -135,8 +134,7 @@
 	                
 									<div >
 										<div class="icon"><img src="/public/main/img/shotgun.png" alt=""></div>
-										<div class="progress-gun"><i style="width: ?php echo $data[$ucp_table_settings['Skill_ShotGun']] ?>%"></i></div>
-										<div class="size-gun"><?php echo $data[$ucp_table_settings['Skill_ShotGun']] ?>%</div>
+						<div class="progress-gun"><i style="width: <?php echo $data[$ucp_table_settings['Skill_ShotGun']] ?>%"></i></div>
 									</div>
 
 	                
@@ -160,16 +158,16 @@
 									<form method="POST" action="/engine/obr/profile.php">
 										
 										<div class="form-group row">
-											<label for="text" class="col-sm-4 col-form-label">Новый пароль:</label>
-											<div class="col-sm-8">
-												<input name="new_password_1" type="text" class="form-control text" placeholder="Введите новый пароль">
-											</div>
-										</div>
+<label for="text" class="col-sm-4 col-form-label">Новий пароль:</label>
+						<div class="col-sm-8">
+							<input name="new_password_1" type="text" class="form-control text" placeholder="Введіть новий пароль">
+						</div>
+					</div>
 
-										<div class="form-group row">
-											<label for="text" class="col-sm-4 col-form-label">Повтор нового пароля:</label>
-											<div class="col-sm-8">
-												<input name="new_password_2" type="text" class="form-control text" placeholder="Повторите новый пароль">
+					<div class="form-group row">
+						<label for="text" class="col-sm-4 col-form-label">Повторіть пароль:</label>
+						<div class="col-sm-8">
+							<input name="new_password_2" type="text" class="form-control text" placeholder="Повторіть новий пароль">
 											</div>
 										</div>
 

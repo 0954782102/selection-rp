@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-	<title>Настройки</title>
+	<title>Налаштування</title>
 	<meta name="description" content="Grandin is a Dashboard & Admin Site Responsive Template by hencework." />
 	<meta name="keywords" content="admin, admin dashboard, admin template, cms, crm, Grandin Admin, Grandinadmin, premium admin templates, responsive admin, sass, panel, software, ui, visualization, web app, application" />
 	<meta name="author" content="hencework"/>
@@ -55,20 +55,20 @@
 														<form class="form-horizontal" method="POST" action="/engine/obr/profile.php">
 															
 															<div class="form-group">
-																<label for="exampleInputpwd_32" class="col-sm-3 control-label">Введите новый пароль</label>
+																<label for="exampleInputpwd_32" class="col-sm-3 control-label">Введіть новий пароль</label>
 																<div class="col-sm-9">
 																	<div class="input-group">
 																		<div class="input-group-addon"><i class="icon-lock"></i></div>
-																		<input type="password" class="form-control" name="new_password_1" id="exampleInputpwd_32" placeholder="Введите новый пароль">
+																		<input type="password" class="form-control" name="new_password_1" id="exampleInputpwd_32" placeholder="Введіть новий пароль">
 																	</div>
 																</div>
 															</div>
 															<div class="form-group">
-																<label for="exampleInputpwd_32" class="col-sm-3 control-label">Повторите новый пароль</label>
+																<label for="exampleInputpwd_32" class="col-sm-3 control-label">Повторіть новий пароль</label>
 																<div class="col-sm-9">
 																	<div class="input-group">
 																		<div class="input-group-addon"><i class="icon-lock"></i></div>
-																		<input type="password" class="form-control" name="new_password_2" id="exampleInputpwd_32" placeholder="Повторите новый пароль">
+																		<input type="password" class="form-control" name="new_password_2" id="exampleInputpwd_32" placeholder="Повторіть новий пароль">
 																	</div>
 																</div>
 															</div>

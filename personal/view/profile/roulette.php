@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 	<meta charset="UTF-8">
 	<title>Рулетка - <?php echo $ucp_settings['s_title']?></title>
@@ -49,9 +49,9 @@
 				    <br>
     <div style="text-align: center;">
  	<?php if($data[$ucp_table_settings['donate']] < $ucp_settings['s_donate_cost']):?>
- 	<a href="/donate"><button class="button-roullet" >Пополнить баланс</button></a>
+ 	<a href="/donate"><button class="button-roullet" >Поповнити баланс</button></a>
  	<?php else:?>
-    <button class="button-roullet" id="go-roullet">Крутить за <b><?php echo $ucp_settings['s_donate_cost'] ?></b> руб.</button>
+    <button class="button-roullet" id="go-roullet">Крутити за <b><?php echo $ucp_settings['s_donate_cost'] ?></b> руб.</button>
 <?php endif;?>
  
     

@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 	<meta charset="UTF-8">
-	<title>Главная - <?php echo $ucp_settings['s_title']?></title>
+	<title>Головна - <?php echo $ucp_settings['s_title']?></title>
 
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -18,8 +18,8 @@
 	<section class="slider">
 		
         <div class="slider-text">
-            <h1><b><?php echo $ucp_settings['s_title']?></b> <span class='no-weight'>— Проект твоего будущего.</span></h1>
-            <div class="start-slider">Начать играть<img src="/public/main/img/arrow-right.svg" alt=''></div>
+            <h1><b><?php echo $ucp_settings['s_title']?></b> <span class='no-weight'>— Проект твого майбутнього.</span></h1>
+            <div class="start-slider">Почати гру<img src="/public/main/img/arrow-right.svg" alt=''></div>
         </div>
         <div class="slider-image"><img src='/public/main/img/slider-image.png' alt=''></div>
         <img src="/public/main/img/vertical-slider.png" id='vertical-slider'>
@@ -27,9 +27,7 @@
 	</section>
 	<div class="heading">
             <div>
-                <h1>Наши сервера</h1>
-                <div class="breaker"></div>
-            </div>
+                <h1>Наші сервери</h1>
         </div>
 
 	<?php 
@@ -74,7 +72,7 @@
 
     <div class="heading">
         <div>
-            <h1>Новости</h1>
+            <h1>Новини</h1>
             <div class="breaker"></div>
         </div>
     </div>
@@ -91,11 +89,11 @@
 						<div class="col-lg-6" style="margin-top: 100px">
 						
 						<div class="content-news">
-							<h2 class="title-news">Новостной блок</h2>
+						<h2 class="title-news">Новинний блок</h2>
 
-							<div class="breaker"></div>
+						<div class="breaker"></div>
 
-							<div class="text-news">Здесь показаны последнии новости проекта. Вы можете ознакомиться со всеми обновлениями, ситуациями и тому подобное</div>
+						<div class="text-news">Тут показані останні новини проєкту. Ви можете ознайомитися з усіма оновленнями та подіями.</div>
 
 						</div>	
 						</div>
@@ -159,7 +157,7 @@
 	
 					<div class="col-md-auto">
 
-					<a href="/news" style="text-decoration: none"><div class="showall">ПОКАЗАТЬ ВСЕ<img src="/public/main/img/3dots.svg" alt=""></div></a>
+					<a href="/news" style="text-decoration: none"><div class="showall">ПОКАЗАТИ ВСІ<img src="/public/main/img/3dots.svg" alt=""></div></a>
 				</div>
 				
 

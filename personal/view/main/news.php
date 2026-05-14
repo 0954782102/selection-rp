@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 	<meta charset="UTF-8">
-	<title>Новости - <?php echo $ucp_settings['s_title']?></title>
+	<title>Новини - <?php echo $ucp_settings['s_title']?></title>
 
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -18,7 +18,7 @@
 
     <div class="heading">
             <div>
-                <h1>Новости</h1>
+                <h1>Новини</h1>
                 <div class="breaker"></div>
             </div>
             <img src="/public/main/img/dots.svg" alt="">
@@ -33,11 +33,11 @@
 						<div class="col-lg-6" style="margin-top: 100px">
 						
 						<div class="content-news">
-							<h2 class="title-news">Новостной блок</h2>
+						<h2 class="title-news">Новинний блок</h2>
 
-							<div class="breaker"></div>
+						<div class="breaker"></div>
 
-							<div class="text-news">Здесь показаны последнии новости проекта. Вы можете ознакомиться со всеми обновлениями, ситуациями и тому подобное</div>
+						<div class="text-news">Тут показані останні новини проєкту. Ви можете ознайомитися з усіма оновленнями та подіями.</div>
 
 						</div>	
 						</div>

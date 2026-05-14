@@ -5,22 +5,18 @@
 	            <img src="<?php echo $ucp_settings['s_logo']?>" class="nav-brand">
 	            <div class="nav-content">
 	                <div class="nav-items">
-	                    <a href='/'>Главная</a>
-	                    <a href='/donate'>Донат</a>
-	                    <a href='/news'>Новости</a>
-	                    <a href='/profile/roulette'>Рулетка</a>
-	                    <a href='#'>Форум</a>
-	                </div>
+                    <a href='/'>Головна</a>
+                    <a href='/donate'>Пожертвування</a>
+                    <a href='/news'>Новини</a>
+                    <a href='/profile/roulette'>Рулетка</a>
 	                
 	                <div class="nav-lk">
 	                    <img src="/public/main/img/person.svg" alt="">
 	                    <?php if(isset($_SESSION['NickName'])):?>
 	                    <a href="/profile/"><?php echo $_SESSION['NickName']?></a>
 	                    <?php else: ?>
-	                    <a href="/profile/">Личный кабинет</a>
-	                	<?php endif; ?>
-
-	                  
+	                    <a href="/profile/">Особистий кабінет</a>
+	                    <?php endif; ?>
 	                </div>
 	                
 	            </div>
@@ -41,25 +37,22 @@
 			<ul class="menu-m">
 
 				<li class="menu__item-m">
-					<a href='/'>Главная</a>
+					<a href='/'>Головна</a>
 				</li>
 				<li class="menu__item-m">
-					<a href='/donate'>Донат</a>
+					<a href='/donate'>Пожертвування</a>
 				</li>
 				<li class="menu__item-m">
-					<a href='/news'>Новости</a>
+					<a href='/news'>Новини</a>
 				</li>
 				<li class="menu__item-m">
 					<a href='/profile/roulette'>Рулетка</a>
 				</li>
-				<li class="menu__item-m">
-					<a href='#'>Форум</a>
-				</li>
 				<li class="menu__item-m ">
 					<?php if(isset($_SESSION['NickName'])):?>
-                    <a href="/profile/"><?php echo $_SESSION['NickName']?></a>
+                    <a href="/profile/">Привіт, <?php echo $_SESSION['NickName']?></a>
                     <?php else: ?>
-                    <a href="/profile/">Личный кабинет</a>
+                    <a href="/profile/">Особистий кабінет</a>
                 	<?php endif; ?>
 				</li>
 			</ul>

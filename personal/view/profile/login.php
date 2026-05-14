@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 	<meta charset="UTF-8">
-	<title>Авторизация - <?php echo $ucp_settings['s_title']?></title>
+	<title>Авторизація - <?php echo $ucp_settings['s_title']?></title>
 	<link rel="shortcut icon" href="<?php echo $ucp_settings['s_favicon']?>" type="image/png">
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -19,7 +19,7 @@
 
     <div class="heading">
         <div>
-            <h1>Авторизация</h1>
+            <h1>Авторизація</h1>
             <div class="breaker"></div>
         </div>
         <img src="/public/main/img/dots.svg" alt="">
@@ -33,29 +33,22 @@
 						<form method="POST" action="/engine/obr/profile.php">
 							
 							<div class="form-group row">
-								<label for="text" class="col-sm-4 col-form-label">Никнейм:</label>
-								<div class="col-sm-8">
-									<input name="user_name" type="text" class="form-control text" placeholder="Введите никнейм">
-								</div>
+						<label for="text" class="col-sm-4 col-form-label">Нікнейм:</label>
+						<div class="col-sm-8">
+							<input name="user_name" type="text" class="form-control text" placeholder="Введіть нікнейм">
 							</div>
 
 							<div class="form-group row">
 								<label for="text" class="col-sm-4 col-form-label">Пароль:</label>
 								<div class="col-sm-8">
-									<input name="user_password" type="password" class="form-control text" placeholder="Введите пароль">
-								</div>
-							</div>
-
+							<input name="user_password" type="password" class="form-control text" placeholder="Введіть пароль">
 							
 							<input type="hidden" name="action" value="login">
 							
 							<div class="row justify-content-md-center mt-1">
 								<div class="col-md-auto">
 									<div class="form-group">
-										<button class="btn " type="submit" > Авторизоваться</button>
-									</div>
-								</div>
-							</div>
+								<button class="btn " type="submit" > Увійти</button>
 					
 						</div>
 

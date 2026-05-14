@@ -1,8 +1,8 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="uk">
 <head>
 	<meta charset="UTF-8">
-	<title>Донат - <?php echo $ucp_settings['s_title']?></title>
+	<title>Пожертвування - <?php echo $ucp_settings['s_title']?></title>
 
 	<meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css">
@@ -20,7 +20,7 @@
 
     <div class="heading">
         <div>
-            <h1>Донат</h1>
+            <h1>Пожертвування</h1>
             <div class="breaker"></div>
         </div>
         <img src="/public/main/img/dots.svg" alt="">
@@ -31,41 +31,31 @@
 				<div class="col-lg-6">
 					<div class="login-block">
 						<div class="container-form">
-						
-							
-							<div class="form-group row">
-								<label for="text" class="col-sm-4 col-form-label">Никнейм:</label>
-								<div class="col-sm-8">
-									<input  type="text" class="form-control text" placeholder="Введите никнейм">
-								</div>
+						<div class="form-group row">
+							<label for="text" class="col-sm-4 col-form-label">Нікнейм:</label>
+							<div class="col-sm-8">
+								<input  type="text" class="form-control text" placeholder="Введіть нікнейм">
 							</div>
-
-							<div class="form-group row">
-								<label for="text" class="col-sm-4 col-form-label">Сумма:</label>
-								<div class="col-sm-8">
-									<input type="password" class="form-control text" placeholder="Введите сумму">
-								</div>
-							</div>
-
-							
-
-							
-							<div class="row justify-content-md-center mt-1">
-								<div class="col-md-auto">
-									<div class="form-group">
-										<button class="btn" type="button" > Купить</button>
-									</div>
-								</div>
-							</div>
-					
 						</div>
 
+						<div class="form-group row">
+							<label for="text" class="col-sm-4 col-form-label">Сума:</label>
+							<div class="col-sm-8">
+								<input type="password" class="form-control text" placeholder="Введіть суму">
+							</div>
+						</div>
+
+						<div class="row justify-content-md-center mt-1">
+							<div class="col-md-auto">
+								<div class="form-group">
+									<button class="btn" type="button" > Придбати</button>
+								</div>
+							</div>
+						</div>
 					</div>
-				</div>
-				
 			</div>					
+			</div>
 		</div>
-	</section>
 	
 	<footer class="fixed-footer">
         <?php include "view/common/footer.php"; ?>

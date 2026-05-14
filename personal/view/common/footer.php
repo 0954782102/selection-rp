@@ -1,7 +1,7 @@
 <div class="container">
     <div class="row justify-content-md-center">
         <div class="col-md-auto">
-            <div class="copywrite">© 2019 <?php echo $ucp_settings['s_title']?> — Проект твоего будущего.</div>
+            <div class="copywrite">© 2019 <?php echo $ucp_settings['s_title']?> — Проект твого майбутнього.</div>
             <img src="<?php echo $ucp_settings['s_logo']?>" class="footer-brand">
         </div>
         
