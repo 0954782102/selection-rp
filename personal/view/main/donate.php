@@ -56,8 +56,8 @@
 			</div>					
 			</div>
 		</div>
-	
-	<footer class="fixed-footer">
+    </section>
+    <footer class="fixed-footer">
         <?php include "view/common/footer.php"; ?>
     </footer>
 

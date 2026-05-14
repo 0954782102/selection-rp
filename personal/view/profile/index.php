@@ -9,7 +9,7 @@
    
     <link rel="stylesheet" type="text/css" href="/public/main/css/style.css">
      <link rel="stylesheet" type="text/css" href="/public/main/css/profile.css">
-    <link rel="stylesheet" type="text/css" href="https://sweetalert.js.org/assets/sweetalert/sweetalert.min.js">
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
     
 
@@ -134,9 +134,9 @@
 	                
 									<div >
 										<div class="icon"><img src="/public/main/img/shotgun.png" alt=""></div>
-						<div class="progress-gun"><i style="width: <?php echo $data[$ucp_table_settings['Skill_ShotGun']] ?>%"></i></div>
-									</div>
-
+                                    <div class="progress-gun"><i style="width: <?php echo $data[$ucp_table_settings['Skill_ShotGun']] ?>%"></i></div>
+                                    <div class="size-gun"><?php echo $data[$ucp_table_settings['Skill_ShotGun']] ?>%</div>
+                                </div>
 	                
 									<div >
 										<div class="icon"><img src="/public/main/img/mp5.png" alt=""></div>
@@ -160,27 +160,21 @@
 										<div class="form-group row">
 <label for="text" class="col-sm-4 col-form-label">Новий пароль:</label>
 						<div class="col-sm-8">
-							<input name="new_password_1" type="text" class="form-control text" placeholder="Введіть новий пароль">
-						</div>
-					</div>
+                            <input name="new_password_1" type="password" class="form-control text" placeholder="Введіть новий пароль">
+                        </div>
+                    </div>
 
-					<div class="form-group row">
-						<label for="text" class="col-sm-4 col-form-label">Повторіть пароль:</label>
-						<div class="col-sm-8">
-							<input name="new_password_2" type="text" class="form-control text" placeholder="Повторіть новий пароль">
-											</div>
-										</div>
-
+                    <div class="form-group row">
+                        <label for="text" class="col-sm-4 col-form-label">Повторіть пароль:</label>
+                        <div class="col-sm-8">
+                            <input name="new_password_2" type="password" class="form-control text" placeholder="Повторіть новий пароль">
 										
 										<input type="hidden" name="action" value="change_password">
 										
 										<div class="row justify-content-md-center mt-1">
 											<div class="col-md-auto">
 												<div class="form-group">
-													<button class="btn btn-gradient" type="submit" > Сменить</button>
-												</div>
-											</div>
-										</div>
+                                                    <button class="btn btn-gradient" type="submit">Змінити</button>
 								
 									</div>
 								</form>
@@ -195,8 +189,8 @@
 			</div>			
 		</div>
 	</section>
-	
-	<footer>
+
+    <footer>
         <?php include "view/common/footer.php"; ?>
     </footer>
 

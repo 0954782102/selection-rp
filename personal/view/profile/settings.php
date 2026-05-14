@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="uk">
 <head>
     <meta charset="UTF-8" />
 	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
@@ -43,7 +43,7 @@
 								<div class="panel panel-default card-view">
 									<div class="panel-heading">
 										<div class="pull-left">
-											<h6 class="panel-title txt-dark">Смена пароля</h6>
+											<h6 class="panel-title txt-dark">Зміна пароля</h6>
 										</div>
 										<div class="clearfix"></div>
 									</div>
@@ -77,7 +77,7 @@
 
 															<div class="form-group mb-0">
 																<div class="col-sm-offset-3 col-sm-9">
-																	<button type="submit" class="btn btn-success ">Принять</button>
+																	<button type="submit" class="btn btn-success ">Зберегти</button>
 																</div>
 															</div>
 														</form>
@@ -93,7 +93,7 @@
 							<div class="panel panel-default card-view">
 								<div class="panel-heading">
 									<div class="pull-left">
-										<h6 class="panel-title txt-dark">Подать заявку в White List</h6>
+										<h6 class="panel-title txt-dark">Подати заявку до White List</h6>
 									</div>
 									<div class="clearfix"></div>
 								</div>
@@ -109,21 +109,21 @@
 											<form  method="POST" action="/engine/obr/profile.php">
 												
 												<div class="form-group mb-10">
-															<label class="control-label mb-10 text-left">Поле 1</label>
+															<label class="control-label mb-10 text-left">Питання 1</label>
 															<textarea class="form-control" name="box1" rows="5"></textarea>
 														</div>
 														<div class="form-group mb-10">
-															<label class="control-label mb-10 text-left">Поле 2</label>
+															<label class="control-label mb-10 text-left">Питання 2</label>
 															<textarea class="form-control" name="box2" rows="5"></textarea>
 														</div>
 														<div class="form-group mb-10">
-															<label class="control-label mb-10 text-left">Поле 3</label>
+															<label class="control-label mb-10 text-left">Питання 3</label>
 															<textarea class="form-control" name="box3" rows="5"></textarea>
 														</div>
 														<input type="hidden" name="action" value="create_request"/>
 														<div class="form-group mb-0">
 															<div class=" col-sm-12">
-																<button type="submit" class="btn btn-block  btn-success">Принять</button>
+																<button type="submit" class="btn btn-block  btn-success">Надіслати</button>
 															</div>
 														</div>
 												
