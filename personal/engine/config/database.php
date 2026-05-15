@@ -1,173 +1,45 @@
 <?php
-// Если файл table.php лежит в той же папке, оставляем так. 
-// Если нет — проверь путь.
-include_once "table.php";
+// test_db.php
+echo "<pre>";
 
-// ОСНОВНЫЕ НАСТРОЙКИ
-// Попробуй 'localhost' вместо '127.0.0.1', если ошибка повторится
-$host    = 'server.MYSQL18'; 
-$dbname  = 'user43104';
-$user    = 'user43104';
-$pass    = '4wJVPki5EPnA';
-$charset = 'utf8mb4'; // utf8mb4 лучше поддерживает современные символы
+// 1. Перевірка розширень
+echo "PDO завантажено: " . (class_exists('PDO') ? 'ТАК' : 'НІ') . "\n";
+echo "MySQLi завантажено: " . (extension_loaded('mysqli') ? 'ТАК' : 'НІ') . "\n";
 
-// Предварительное определение констант (на случай, если PDO не загружен)
-if (!defined('PDO::ATTR_DEFAULT_FETCH_MODE')) define('PDO::ATTR_DEFAULT_FETCH_MODE', 3);
-if (!defined('PDO::ATTR_EMULATE_PREPARES'))   define('PDO::ATTR_EMULATE_PREPARES', 20);
-if (!defined('PDO::FETCH_ASSOC'))             define('PDO::FETCH_ASSOC', 2);
-if (!defined('PDO::ERRMODE_EXCEPTION'))       define('PDO::ERRMODE_EXCEPTION', 2);
-
-/**
- * Эмуляция PDOStatement через MySQLi для старых систем
- */
-class PDOStatementCompat
-{
-    protected $mysqli;
-    protected $sql;
-    protected $params = [];
-    protected $result;
-    protected $affectedRows = 0;
-
-    public function __construct($mysqli, $sql)
-    {
-        $this->mysqli = $mysqli;
-        $this->sql = $sql;
-    }
-
-    public function bindParam($param, &$variable, $data_type = null, $length = null, $driver_options = null)
-    {
-        $this->params[$param] = &$variable;
-        return true;
-    }
-
-    public function bindValue($param, $value, $data_type = null)
-    {
-        $this->params[$param] = $value;
-        return true;
-    }
-
-    public function execute($params = null)
-    {
-        if (is_array($params)) {
-            foreach ($params as $key => $value) {
-                $this->params[$key[0] === ':' ? $key : ':' . $key] = $value;
-            }
-        }
-
-        $sql = $this->sql;
-        $sql = preg_replace_callback('/(:[a-zA-Z0-9_]+)/', function ($matches) {
-            $placeholder = $matches[1];
-            if (!array_key_exists($placeholder, $this->params)) {
-                return $placeholder;
-            }
-            return $this->quote($this->params[$placeholder]);
-        }, $sql);
-
-        $this->result = $this->mysqli->query($sql);
-        if ($this->result === false) {
-            return false;
-        }
-
-        $this->affectedRows = $this->mysqli->affected_rows;
-        return true;
-    }
-
-    protected function quote($value)
-    {
-        if (is_int($value) || is_float($value)) {
-            return $value;
-        }
-        return "'" . $this->mysqli->real_escape_string($value) . "'";
-    }
-
-    public function fetch()
-    {
-        if ($this->result instanceof mysqli_result) {
-            return $this->result->fetch_assoc();
-        }
-        return false;
-    }
-
-    public function rowCount()
-    {
-        if ($this->result instanceof mysqli_result) {
-            return $this->result->num_rows;
-        }
-        return $this->affectedRows;
-    }
-}
-
-/**
- * Эмуляция PDO через MySQLi
- */
-class PDOCompat
-{
-    protected $mysqli;
-
-    public function __construct($mysqli)
-    {
-        $this->mysqli = $mysqli;
-    }
-
-    public function prepare($sql)
-    {
-        return new PDOStatementCompat($this->mysqli, $sql);
-    }
-
-    public function query($sql, $fetchMode = null)
-    {
-        return $this->mysqli->query($sql);
-    }
-}
-
-// ЛОГИКА ПОДКЛЮЧЕНИЯ
-$usePdoMysql = false;
 if (class_exists('PDO')) {
+    echo "PDO драйвери: " . implode(', ', PDO::getAvailableDrivers()) . "\n";
+}
+
+echo "\n";
+
+// 2. Спроба підключення через PDO
+$hosts = ['localhost', '127.0.0.1', 'mysql', 'db'];
+$user   = 'user43104';
+$pass   = '4wJVPki5EPnA';
+$dbname = 'user43104';
+
+foreach ($hosts as $h) {
     try {
-        $drivers = PDO::getAvailableDrivers();
-        $usePdoMysql = in_array('mysql', $drivers, true);
+        $pdo = new PDO("mysql:host=$h;dbname=$dbname;charset=utf8mb4", $user, $pass);
+        echo "? PDO підключився через: $h\n";
+        break;
     } catch (Exception $e) {
-        $usePdoMysql = false;
+        echo "? PDO $h: " . $e->getMessage() . "\n";
     }
 }
 
-if ($usePdoMysql) {
-    // Вариант 1: Через стандартный PDO
-    $dsn = "mysql:host=$host;dbname=$dbname;charset=$charset";
-    $opt = [
-        PDO::ATTR_ERRMODE            => PDO::ERRMODE_EXCEPTION,
-        PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
-        PDO::ATTR_EMULATE_PREPARES   => false,
-    ];
-    try {
-        $db = new PDO($dsn, $user, $pass, $opt);
-    } catch (PDOException $e) {
-        die('Ошибка подключения (PDO): ' . $e->getMessage());
-    }
-} elseif (extension_loaded('mysqli')) {
-    // Вариант 2: Через эмуляцию и MySQLi
+echo "\n";
+
+// 3. Спроба через MySQLi
+foreach ($hosts as $h) {
     mysqli_report(MYSQLI_REPORT_OFF);
-    $mysqli = @new mysqli($host, $user, $pass, $dbname);
-    
-    if ($mysqli->connect_error) {
-        die('Ошибка подключения (MySQLi): ' . $mysqli->connect_error . ' (Код: ' . $mysqli->connect_errno . ')');
+    $m = @new mysqli($h, $user, $pass, $dbname);
+    if (!$m->connect_error) {
+        echo "? MySQLi підключився через: $h\n";
+        break;
+    } else {
+        echo "? MySQLi $h: " . $m->connect_error . "\n";
     }
-    
-    $mysqli->set_charset($charset);
-    $db = new PDOCompat($mysqli);
-} else {
-    die('Критическая ошибка: на сервере не установлены расширения PDO или MySQLi.');
 }
 
-// ТЕСТОВЫЙ ЗАПРОС
-try {
-    $sql = "SELECT * FROM ucp_settings";
-    $statement = $db->prepare($sql);
-    $statement->execute();
-    $ucp_settings = $statement->fetch();
-    
-    // Если нужно проверить результат:
-    // print_r($ucp_settings);
-} catch (Exception $e) {
-    echo "Ошибка выполнения запроса: " . $e->getMessage();
-}
+echo "</pre>";
