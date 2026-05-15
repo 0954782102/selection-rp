@@ -5,7 +5,7 @@ include_once "table.php";
 
 // ОСНОВНЫЕ НАСТРОЙКИ
 // Попробуй 'localhost' вместо '127.0.0.1', если ошибка повторится
-$host    = 'localhost'; 
+$host    = 'server.MYSQL18'; 
 $dbname  = 'user43104';
 $user    = 'user43104';
 $pass    = '4wJVPki5EPnA';
