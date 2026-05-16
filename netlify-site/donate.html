@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Донат | Selection RP</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="auth-page container py-5">
+    <div class="card mx-auto auth-card">
+      <div class="card-body">
+        <h2 class="card-title text-center">Донат</h2>
+        <form id="donate-form">
+          <div class="form-group">
+            <label for="donate-amount">Сума донату</label>
+            <input id="donate-amount" name="amount" type="number" min="1" class="form-control" required>
+          </div>
+          <button type="submit" class="btn btn-success btn-block">Пожертвувати</button>
+        </form>
+        <div id="donate-message" class="mt-3"></div>
+        <div class="text-center mt-3">
+          <a href="profile.html">До кабінету</a> · <a href="index.html">Головна</a>
+        </div>
+      </div>
+    </div>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>

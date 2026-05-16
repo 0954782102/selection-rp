@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selection RP | Netlify</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <header class="site-header text-center">
+    <div class="container">
+      <h1>Selection RP на Netlify</h1>
+      <p>Статичний фронтенд + Netlify Functions для авторизації, кабінету, донату та рулетки.</p>
+      <div class="btn-group mt-4">
+        <a class="btn btn-primary" href="login.html">Увійти</a>
+        <a class="btn btn-secondary" href="profile.html">Кабінет</a>
+        <a class="btn btn-success" href="donate.html">Донат</a>
+        <a class="btn btn-info" href="roulette.html">Рулетка</a>
+      </div>
+      <p class="mt-3 small">Тестовий користувач: <strong>demo</strong> / <strong>demo123</strong></p>
+    </div>
+  </header>
+
+  <main class="container mt-5">
+    <section>
+      <h2>Що працює</h2>
+      <ul>
+        <li>Статичний сайт без PHP.</li>
+        <li>Авторизація через Netlify Function.</li>
+        <li>Показ особистого кабінету.</li>
+        <li>Додати донат і оновити баланс.</li>
+        <li>Запуск рулетки з вирахуванням балансу.</li>
+      </ul>
+    </section>
+
+    <section class="mt-4">
+      <h2>Налаштування для Netlify</h2>
+      <p>Додайте ці змінні середовища у Netlify:</p>
+      <ul>
+        <li><code>SUPABASE_URL</code></li>
+        <li><code>SUPABASE_KEY</code></li>
+        <li><code>SUPABASE_TABLE_USERS</code></li>
+        <li><code>SUPABASE_TABLE_ITEMS</code></li>
+        <li><code>SUPABASE_TABLE_DONATIONS</code> (опціонально)</li>
+        <li><code>PASSWORD_HASH</code> = <code>plain</code> або <code>sha256</code></li>
+        <li><code>ROULETTE_COST</code> = <code>25</code> (за замовчуванням)</li>
+      </ul>
+      <p>Якщо змінні не встановлені, система працює на локальних тестових даних.</p>
+    </section>
+  </main>
+
+  <footer class="text-center py-4">
+    <span>Selection RP на Netlify</span>
+  </footer>
+</body>
+</html>

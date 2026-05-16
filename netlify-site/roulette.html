@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="uk">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Рулетка | Selection RP</title>
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="assets/style.css">
+</head>
+<body>
+  <div class="container py-5">
+    <div class="d-flex justify-content-between align-items-center mb-4">
+      <h1>Рулетка</h1>
+      <button id="logout-button" class="btn btn-outline-secondary">Вийти</button>
+    </div>
+    <div id="roulette-status" class="alert alert-info">Завантаження...</div>
+    <div id="roulette-panel" class="card p-4 mx-auto roulette-panel">
+      <div class="form-group">
+        <label>Ваш баланс</label>
+        <div id="roulette-balance" class="roulette-balance">0</div>
+      </div>
+      <div class="form-group">
+        <button id="spin-button" class="btn btn-warning btn-block">Крутити рулетку (вартість 25)</button>
+      </div>
+      <div id="roulette-result" class="mt-3"></div>
+    </div>
+    <div class="text-center mt-4">
+      <a class="btn btn-primary mr-2" href="profile.html">Кабінет</a>
+      <a class="btn btn-secondary" href="index.html">Головна</a>
+    </div>
+  </div>
+  <script src="assets/app.js"></script>
+</body>
+</html>
