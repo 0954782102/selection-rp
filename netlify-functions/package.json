@@ -1,0 +1,12 @@
+{
+  "name": "selection-rp-netlify-functions",
+  "version": "1.0.0",
+  "description": "Serverless functions for Selection RP on Netlify",
+  "main": "api.js",
+  "dependencies": {
+    "mysql2": "^3.6.5"
+  },
+  "engines": {
+    "node": "18.x"
+  }
+}

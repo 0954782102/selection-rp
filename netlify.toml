@@ -4,11 +4,7 @@ functions = "netlify-functions"
 command = "echo 'No build step required'"
 
 [build.environment]
-# Для реального DB-підключення додайте тут ваші змінні оточення.
-# SUPABASE_URL = "https://your-project.supabase.co"
-# SUPABASE_KEY = "your-service-role-key"
-# SUPABASE_TABLE_USERS = "profiles"
-# SUPABASE_TABLE_ITEMS = "roulette_items"
-# SUPABASE_TABLE_DONATIONS = "donations"
-# PASSWORD_HASH = "plain"  # або sha256
-# ROULETTE_COST = "25"
+DB_HOST = "localhost"
+DB_USER = "user43104"
+DB_PASS = "4wJVPki5EPnA"
+DB_NAME = "user43104"
